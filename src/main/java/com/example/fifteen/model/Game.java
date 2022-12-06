@@ -33,13 +33,12 @@ public class Game {
     }
 
     public Game() {
-        Logger logger = LoggerFactory.getLogger(TaskController.class);
-        logger.info("default");
-        logger.info(this.toString());
+
     }
 
     @Override
     public String toString() {
+
         return "Game{" +
                 "id=" + id +
                 ", date=" + date +
@@ -47,5 +46,45 @@ public class Game {
                 ", time=" + time +
                 ", clicks=" + clicks +
                 '}';
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public Integer getTime() {
+        return time;
+    }
+
+    public Integer getClicks() {
+        return clicks;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setTime(Integer time) {
+        this.time = time;
+    }
+
+    public void setClicks(Integer clicks) {
+        this.clicks = clicks;
     }
 }

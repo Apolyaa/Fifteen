@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Рекорды</title>
+</head>
+<body>
+<div class = "title">
+  <h1>Рекорды</h1>
+</div>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Clicks</th>
+  </tr>
+  <#list records as record>
+  <tr>
+    <td>${record.date!"01-01-2022"}</td>
+    <td>${record.clicks!00}</td>
+  </tr>
+  </#list>
+</table>
+
+</body>
+</html>
