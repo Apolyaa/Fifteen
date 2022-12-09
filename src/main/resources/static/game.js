@@ -1,3 +1,31 @@
+var StartSecond, TempTime;
+
+function msToTime(duration) {
+    var seconds = Math.floor((duration / 1000) % 60),
+        minutes = Math.floor((duration / (1000 * 60)) % 60),
+        hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+    hours = (hours < 10) ? "0" + hours : hours;
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+    return hours + ":" + minutes + ":" + seconds;
+}
+
+function startTimer()
+{
+    let gameTime;
+    gameTime = new Date().getTime() - StartSecond;
+    TempTime = msToTime(gameTime);
+
+    const timer = document.getElementById('timer');
+    if (timer) {
+        timer.innerHTML=TempTime;
+    }
+    setTimeout(startTimer, 1000);
+}
+
+
 function Game(context, cellSize){
     this.state = [
         [1,2,3,4],
@@ -148,6 +176,7 @@ window.onload = function() {
         let y = (e.touches[0].pageY - canvas.offsetTop) / cellSize | 0;
 
         onEvent(x, y);
+        StartSecond = new Date().getTime();
     };
 
     function onEvent(x, y) {
@@ -155,7 +184,9 @@ window.onload = function() {
         context.fillRect(0, 0, canvas.width, canvas.height);
         game.draw();
         if (game.victory()) {
-            localStorage.setItem('time', 300);
+            const gameTime = (new Date().getTime() - StartSecond);
+
+            localStorage.setItem('time', gameTime);
             localStorage.setItem('clicks', game.getClicks());
             window.location.href = "./reward";
             // alert("Собрано за " + game.getClicks() + " касание!");
@@ -164,4 +195,6 @@ window.onload = function() {
             // game.draw(context, cellSize);
         }
     }
+    StartSecond = new Date().getTime();
+    startTimer();
 }
