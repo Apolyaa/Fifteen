@@ -7,11 +7,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -51,31 +55,18 @@ public class TaskController {
     public String records(Model model) {
 
         List<Game> games = gameService.findAll();
-        model.addAttribute("records", games);
+        Collections.sort(games);
+        List<Game> games_top10 = new ArrayList<Game>();
+        Integer size = games.size();
+        if (size>10)
+                size =10;
+        for (Integer i=0;i<size;i++)
+            games_top10.add(games.get(i));
+        model.addAttribute("records", games_top10);
         System.out.println("records:");
-        games.forEach(game -> System.out.println(game.toString()));
+        games_top10.forEach(game -> System.out.println(game.toString()));
 
         return "records";
-    }
-
-    @GetMapping(produces = {"application/json"}, value = "/findAll" )
-    @ResponseBody
-    public List<Game> records() {
-        List<Game> games = gameService.findAll();
-        System.out.println("findAll:");
-        games.forEach(game -> System.out.println(game.toString()));
-        return games;
-    }
-
-    @GetMapping("/first")
-    @ResponseBody
-    public ResponseEntity<Game> first() {
-        List<Game> games = gameService.findAll();
-        Game firstGame = games.get(0);
-        System.out.println("first:");
-        System.out.println(firstGame.toString());
-
-        return ResponseEntity.ok(firstGame);
     }
 
 }

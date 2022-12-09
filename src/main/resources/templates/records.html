@@ -11,12 +11,16 @@
 
 <table>
   <tr>
-    <th>Date</th>
-    <th>Clicks</th>
+    <th>Дата</th>
+    <th>Имя пользователя</th>
+    <th>Время</th>
+    <th>Количество кликов</th>
   </tr>
   <#list records as record>
   <tr>
     <td>${record.date!"01-01-2022"}</td>
+    <td>${record.userName!"Unknown"}</td>
+    <td>${record.time!"00:00:00"}</td>
     <td>${record.clicks!00}</td>
   </tr>
   </#list>

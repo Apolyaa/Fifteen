@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Date;
 
 @Entity
-public class Game {
+public class Game implements Comparable<Game>{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
@@ -86,5 +86,10 @@ public class Game {
 
     public void setClicks(Integer clicks) {
         this.clicks = clicks;
+    }
+
+    @Override
+    public int compareTo(Game o) {
+        return this.clicks - o.getClicks();
     }
 }
