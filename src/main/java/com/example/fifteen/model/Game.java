@@ -60,8 +60,19 @@ public class Game implements Comparable<Game>{
         return userName;
     }
 
-    public Integer getTime() {
-        return time;
+    public String getTime() {
+        double seconds = Math.floor((time / 1000) % 60);
+        double minutes = Math.floor((time / (1000 * 60)) % 60);
+        double hours = Math.floor((time / (1000 * 60 * 60)) % 24);
+
+
+        String hours_text = (hours < 10) ? "0" + String.valueOf((int) hours) : String.valueOf((int) hours);
+        String minutes_text = (minutes < 10) ? "0" + String.valueOf((int) minutes) : String.valueOf((int) minutes);
+        String seconds_text = (seconds < 10) ? "0" + String.valueOf((int) seconds) : String.valueOf((int) seconds);
+
+        return hours_text + ":" + minutes_text + ":" + seconds_text;
+
+//        return time;
     }
 
     public Integer getClicks() {
