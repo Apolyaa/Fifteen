@@ -3,27 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Рекорды</title>
+  <link href="records.css" rel="stylesheet">
 </head>
 <body>
 <div class = "title">
   <h1>Рекорды</h1>
 </div>
 
-<table>
+<table class="table">
   <tr>
-    <th>Дата</th>
-    <th>Имя пользователя</th>
-    <th>Время</th>
-    <th>Количество кликов</th>
+        <th>Имя пользователя</th>
+        <th>Время</th>
+        <th>Количество кликов</th>
+        <th>Дата</th>
   </tr>
-  <#list records as record>
-  <tr>
-    <td>${record.date!"01-01-2022"}</td>
-    <td>${record.userName!"Unknown"}</td>
-    <td>${record.time!"00:00:00"}</td>
-    <td>${record.clicks!00}</td>
-  </tr>
-  </#list>
+      <#list records as record>
+      <tr>
+        <td>${record.userName!"Unknown"}</td>
+        <td>${record.time!"00:00:00"}</td>
+        <td>${record.clicks!00}</td>
+        <td>${record.date!"01-01-2022"}</td>
+      </tr>
+      </#list>
 </table>
 
 </body>

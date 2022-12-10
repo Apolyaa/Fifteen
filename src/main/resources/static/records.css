@@ -1,0 +1,31 @@
+table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    border-collapse: collapse;
+    text-align: center;
+}
+th {
+    background: #6531d9;
+    color: white;
+    padding: 10px 20px;
+}
+th, td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+    padding: 10px 20px;}
+td {
+    background:  #f1d581;
+}
+table {
+    width: 1000px;
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+}
+td {
+    text-align: center; /* Выравниваем текст по центру ячейки */
+}
+h1{
+    text-align:center;
+    margin-bottom:1%;
+    margin-top:1%;
+}
