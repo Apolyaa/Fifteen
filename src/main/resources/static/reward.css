@@ -3,8 +3,17 @@ body{
 }
 p{
     text-align:center;
+    font-size: 25px;
+    margin-bottom: 15px;
+    margin-top:15px;
+    color: black;
 }
-
+label{
+    font-size: 25px;
+    margin-bottom: 15px;
+    margin-top:15px;
+    color: black;
+}
 .wrapper {
     display: flex;
     max-width: 720px;
@@ -17,17 +26,21 @@ p{
 .btn-group{
     display: flex;
     flex-flow: column wrap;
-    min-width: 400px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 a {
     background-color: #653ea5;
     color: white;
-    padding: 1em 1.5em;
+    padding: 15px;
     text-decoration: none;
     text-transform: uppercase;
     text-align:center;
-    margin:2%;
+    font-size: 2em;
+    margin: 3% 0;
+    line-height: 55px;
 }
 
 a:hover {
@@ -60,4 +73,9 @@ input {
 }
 .text{
     margin: 0 auto;
+}
+.image{
+    max-width: 300px;
+    margin: 0 auto;
+    display: flex;
 }

@@ -60,7 +60,7 @@ Game.prototype.numView = function() {
     this.context.font = "bold " + (this.cellSize/2) + "px Sans";
     this.context.textAlign = "center";
     this.context.textBaseline = "middle";
-    this.context.fillStyle = "#222";
+    this.context.fillStyle = "#ffffff";
 };
 //отрисовывает всю игру
 Game.prototype.draw = function() {
@@ -164,6 +164,7 @@ window.onload = function() {
     canvas.height = 500;
 
     let context = canvas.getContext("2d");
+    context.fillStyle = "#ffffff";
     context.fillRect(0, 0, canvas.width, canvas.height);
 
     let cellSize = canvas.width / 4;
