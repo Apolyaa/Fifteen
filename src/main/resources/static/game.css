@@ -1,3 +1,17 @@
 
 body {margin: auto;}
-canvas { border:2px solid #333;}
+canvas {
+    border:2px solid #333;
+    display: block;
+    margin: 0 auto;
+}
+p{
+    text-align:center;
+    font-size: 50px;
+    margin-bottom:2%;
+    margin-top:2%;
+    color: black;
+}
+body{
+    background-color: #ffef9b;
+}

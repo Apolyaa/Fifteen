@@ -41,10 +41,11 @@ function Game(context, cellSize){
 
     this.clicks = 0;
 }
-
+//текущее кол-во кликов
 Game.prototype.getClicks = function() {
     return this.clicks;
 };
+//получает координаты и рисует в них квадрат пятнашки заданного размера и цвета
 Game.prototype.cellView = function(x, y) {
     this.context.fillStyle = this.color;
     this.context.fillRect(
@@ -54,12 +55,14 @@ Game.prototype.cellView = function(x, y) {
         this.cellSize - 2
     );
 };
+//устанавливает стили для текста на пятнашках
 Game.prototype.numView = function() {
     this.context.font = "bold " + (this.cellSize/2) + "px Sans";
     this.context.textAlign = "center";
     this.context.textBaseline = "middle";
     this.context.fillStyle = "#222";
 };
+//отрисовывает всю игру
 Game.prototype.draw = function() {
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
@@ -78,6 +81,7 @@ Game.prototype.draw = function() {
         }
     }
 };
+//возвращает позицию пустой клетки на поле
 Game.prototype.getNullCell = function(){
     for (let i = 0; i<4; i++){
         for (let j=0; j<4; j++){
@@ -87,7 +91,7 @@ Game.prototype.getNullCell = function(){
         }
     }
 };
-
+//При клике на пятнашку будет вызван метод move, который должен переместить ее на пустую клетку
 Game.prototype.move = function(x, y) {
     let nullCell = this.getNullCell();
     let canMoveVertical = (x - 1 == nullCell.x || x + 1 == nullCell.x) && y == nullCell.y;
@@ -99,6 +103,7 @@ Game.prototype.move = function(x, y) {
         this.clicks++;
     }
 };
+//проверяет, сложены ли пятнашки правильно
 Game.prototype.victory = function() {
     let combination = [[1,2,3,4], [5,6,7,8], [9,10,11,12], [13,14,15,0]];
     let res = true;
@@ -112,12 +117,13 @@ Game.prototype.victory = function() {
     }
     return res;
 };
+//Для выбора клетки используется вспомогательная функция getRandomBool
 function getRandomBool() {
     if (Math.floor(Math.random() * 2) === 0) {
         return true;
     }
 }
-
+//перемешивает пятнашки заданное количество раз
 Game.prototype.mix = function(count) {
     let x, y;
     for (let i = 0; i < count; i++) {
@@ -149,12 +155,13 @@ Game.prototype.mix = function(count) {
 
     this.clicks = 0;
 };
+//инициализация игры
 window.onload = function() {
     localStorage.clear();
 
     let canvas = document.getElementById("canvas");
-    canvas.width = 400;
-    canvas.height = 400;
+    canvas.width = 500;
+    canvas.height = 500;
 
     let context = canvas.getContext("2d");
     context.fillRect(0, 0, canvas.width, canvas.height);
