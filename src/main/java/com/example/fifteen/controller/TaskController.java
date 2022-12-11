@@ -3,8 +3,6 @@ package com.example.fifteen.controller;
 import com.example.fifteen.model.Game;
 import com.example.fifteen.repo.GameRepository;
 import com.example.fifteen.service.IGameService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -44,10 +42,6 @@ public class TaskController {
     @PostMapping("/saveGameData")
     @ResponseStatus(HttpStatus.OK)
     public void saveGameData(@RequestBody Game request) {
-        Logger logger = LoggerFactory.getLogger(TaskController.class);
-        logger.info("saveGameData");
-        logger.info(request.toString());
-
         repo.save(request);
     }
 
@@ -63,9 +57,6 @@ public class TaskController {
         for (Integer i=0;i<size;i++)
             games_top10.add(games.get(i));
         model.addAttribute("records", games_top10);
-        System.out.println("records:");
-        games_top10.forEach(game -> System.out.println(game.toString()));
-
         return "records";
     }
 

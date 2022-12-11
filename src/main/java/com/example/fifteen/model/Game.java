@@ -1,13 +1,10 @@
 package com.example.fifteen.model;
 
 
-import com.example.fifteen.controller.TaskController;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
@@ -26,10 +23,6 @@ public class Game implements Comparable<Game>{
         this.userName = userName;
         this.time = time;
         this.clicks = clicks;
-
-        Logger logger = LoggerFactory.getLogger(TaskController.class);
-        logger.info("with param");
-        logger.info(this.toString());
     }
 
     public Game() {
@@ -71,8 +64,6 @@ public class Game implements Comparable<Game>{
         String seconds_text = (seconds < 10) ? "0" + String.valueOf((int) seconds) : String.valueOf((int) seconds);
 
         return hours_text + ":" + minutes_text + ":" + seconds_text;
-
-//        return time;
     }
 
     public Integer getClicks() {
